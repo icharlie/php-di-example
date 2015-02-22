@@ -14,7 +14,7 @@ class PopulationTest extends TestCase
 
     public function testGetTopPopulationCities()
     {
-		$result = $this->population->getTopPopulationCities();
+		$result = $this->population->getTopPopulationCities(10);
 		$this->assertEquals([['Name' => 'A', 'Population' => 100]], $result);
     }
 }
