@@ -29,4 +29,10 @@ class PopulationTest extends TestCase
         $result = $this->population->getTopPopulationCities(10);
         $this->assertEquals([['Name' => 'A', 'Population' => 100]], $result);
     }
+
+    public function testGetTopPopulationCountries()
+    {
+        $result = $this->population->getTopPopulationCountries(10);
+        $this->assertEquals([['Name' => 'A', 'Population' => 100]], $result);
+    }
 }

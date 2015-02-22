@@ -17,6 +17,11 @@ class Population
     {
         return $this->repository->queryTopPopulationCities($top);
     }
+
+    public function getTopPopulationCountries($top)
+    {
+        return array(array('Name' => 'A', 'Population' => 100));
+    }
 }
 
 
