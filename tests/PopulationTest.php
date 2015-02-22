@@ -32,6 +32,8 @@ class PopulationTest extends TestCase
 
     public function testGetTopPopulationCountries()
     {
+        $this->populationRepo->shouldReceive('queryTopPopulationCountries')
+            ->once()->andReturn([['Name' => 'A', 'Population' => 100]]);
         $result = $this->population->getTopPopulationCountries(10);
         $this->assertEquals([['Name' => 'A', 'Population' => 100]], $result);
     }
