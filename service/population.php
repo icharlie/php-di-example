@@ -9,6 +9,7 @@ class Population
 {
     public function getTopPopulationCities()
     {
+        return [['Name' => 'A', 'Population' => 100]];
     }
 }
 
