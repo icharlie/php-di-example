@@ -20,25 +20,8 @@ class Population
 
     public function getTopPopulationCountries($top)
     {
-        try {
-            $pdo = new PDO(
-                'mysql:host=127.0.0.1;dbname=world;port=3306;charset=utf8',
-                'homestead',
-                'secret'
-            );
 
-        } catch(PDOException $e) {
-            die(json_encode(array('error' => 'y', 'message' => 'Database connection failed')));
-        }
-        $sql = 'SELECT Name, Population FROM Country ORDER BY Population DESC limit :top';
-        $statment = $pdo->prepare($sql);
-        $statment->bindValue(':top', $top, PDO::PARAM_INT);
-        $statment->execute();
-
-        while(($result = $statment->fetch(PDO::FETCH_ASSOC)) !== false) {
-            $results[] = $result;
-        }
-        return $results;
+        return $this->repository->queryTopPopulationCountries($top);
     }
 }
 
@@ -51,7 +34,6 @@ if (getenv('APP_ENV') != 'testing') {
 
     $population = $container->make('Population');
 
-    $results = array();
     if ($action == 'getTopPopulationCities') {
         die(json_encode($population->getTopPopulationCities($top)));
     }

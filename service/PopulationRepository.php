@@ -26,7 +26,6 @@ class PopulationRepository
     {
         $results = array();
 
-
         $sql = 'SELECT Name, Population FROM City ORDER BY Population DESC limit :top';
         $statment = $this->pdo->prepare($sql);
         $statment->bindValue(':top', $top, PDO::PARAM_INT);
@@ -37,6 +36,19 @@ class PopulationRepository
         }
 
         return $results;
+    }
 
+    public function queryTopPopulationCountries($top)
+    {
+        $results = array();
+
+        $sql = 'SELECT Name, Population FROM Country ORDER BY Population DESC limit :top';
+        $statment = $this->pdo->prepare($sql);
+        $statment->bindValue(':top', $top, PDO::PARAM_INT);
+        $statment->execute();
+
+        while(($result = $statment->fetch(PDO::FETCH_ASSOC)) !== false) {
+            $results[] = $result;
+        }
     }
 }
