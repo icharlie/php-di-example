@@ -6,8 +6,15 @@
  */
 class PopulationTest extends TestCase
 {
+	public function setUp()
+	{
+		parent::setUp();
+		$this->population = $this->container->make('Population');
+	}
+
     public function testGetTopPopulationCities()
     {
-        $this->assertTrue(true);
+		$result = $this->population->getTopPopulationCities();
+		$this->assertEquals([['Name' => 'A', 'Population' => 100]], $result);
     }
 }

@@ -1,5 +1,17 @@
 <?php
 
+
+/**
+ * Class Population
+ * @author Charlie Chang
+ */
+class Population
+{
+    public function getTopPopulationCities()
+    {
+    }
+}
+
 $action = filter_input(INPUT_GET, 'action');
 $top = (int)filter_input(INPUT_GET, 'top');
 

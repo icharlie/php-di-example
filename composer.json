@@ -6,6 +6,11 @@
         "phpunit/phpunit": "~4.0",
         "mockery/mockery": "0.9.*"
     },
+	"autoload": {
+		"classmap": [
+			"service/"
+		]
+	},
 	"autoload-dev": {
 		"classmap": [
 			"tests/TestCase.php"
