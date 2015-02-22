@@ -18,13 +18,13 @@ class PopulationRepository
             );
 
         } catch(PDOException $e) {
-            die(json_encode(array('error' => 'y', 'message' => 'Database connection failed')));
+            die(json_encode(['error' => 'y', 'message' => 'Database connection failed']));
         }
     }
 
     public function queryTopPopulationCities($top)
     {
-        $results = array();
+        $results = [];
 
         $sql = 'SELECT Name, Population FROM City ORDER BY Population DESC limit :top';
         $statment = $this->pdo->prepare($sql);
@@ -40,7 +40,7 @@ class PopulationRepository
 
     public function queryTopPopulationCountries($top)
     {
-        $results = array();
+        $results = [];
 
         $sql = 'SELECT Name, Population FROM Country ORDER BY Population DESC limit :top';
         $statment = $this->pdo->prepare($sql);
